@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/generate-pdf", async (req, res) => {
-  const { url } = req.body;
+  const { url } = "https://dev.visualisation.polimapper.co.uk/?dataSetKey=full-test&client=polimapperinternaltests#con_over=Bishop%20Auckland";
 
   // Launch browser without specifying executablePath
   const browser = await puppeteer.launch({
