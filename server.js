@@ -11,10 +11,9 @@ app.use(express.json());
 
 app.post("/generate-pdf", async (req, res) => {
   const { url } = req.body;
-  
-  // Explicitly specify the executable path for Chromium
+
+  // Launch browser without specifying executablePath
   const browser = await puppeteer.launch({
-    executablePath: '/opt/render/.cache/puppeteer/chrome/linux-128.0.6613.84/chrome-linux64/chrome',
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
