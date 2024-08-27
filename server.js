@@ -9,6 +9,9 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Handle preflight requests
+app.options('*', cors());  // Preflight OPTIONS request handling
+
 app.post("/generate-pdf", async (req, res) => {
   const { url } = req.body;
   const browser = await puppeteer.launch({
