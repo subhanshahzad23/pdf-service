@@ -3,9 +3,10 @@ const puppeteer = require("puppeteer");
 const cors = require("cors");
 const fs = require('fs');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Ensure you're using the correct port for deployment
 
-app.use(cors()); // Enables CORS for all domains
+// Configure CORS to allow requests from any origin
+app.use(cors());
 app.use(express.json());
 
 app.post("/generate-pdf", async (req, res) => {
