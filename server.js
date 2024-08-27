@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 const cors = require("cors");
 const fs = require('fs');
 const app = express();
-const port = process.env.PORT || 3000; // Ensure you're using the correct port for deployment
+const port = process.env.PORT || 3000;
 
 // Configure CORS to allow requests from any origin
 app.use(cors());
