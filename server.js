@@ -9,16 +9,16 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Handle preflight requests
-app.options('*', cors());  // Preflight OPTIONS request handling
-
 app.post("/generate-pdf", async (req, res) => {
   const { url } = req.body;
+  
+  // Explicitly specify the executable path for Chromium
   const browser = await puppeteer.launch({
+    executablePath: '/opt/render/.cache/puppeteer/chrome/linux-128.0.6613.84/chrome-linux64/chrome',
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
-  const page = await browser.newPage();
 
+  const page = await browser.newPage();
   await page.emulateMediaType("screen");
 
   try {
