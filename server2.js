@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/generate-pdf", async (req, res) => {
-  const { url } = req.body;
+  const {url} = req.body;
   let browser;
   try {
     browser = await puppeteer.launch({
@@ -40,15 +40,12 @@ app.post("/generate-pdf", async (req, res) => {
       pageRanges: "1", // Generate only the first page
     });
 
-    // Generate the second PDF without the header (remaining pages) and add top margin
+    // Generate the second PDF without the header (remaining pages)
     const remainingPagesPdfPath = "remaining-pages.pdf";
     await page.addStyleTag({
       content: `
         .topbar {
           display: none !important;
-        }
-        body {
-          margin-top: 20px !important; /* Add 20px top margin */
         }
       `,
     });
