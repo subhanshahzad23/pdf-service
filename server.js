@@ -10,8 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/generate-pdf", async (req, res) => {
-  const url =
-    "https://dev.visualisation.polimapper.co.uk/?dataSetKey=developer-test&client=testclientkillssss#con_over=Aberdeen%20North";
+  const {url} = req.body
   let browser;
   try {
     browser = await puppeteer.launch({
